@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+// const { Genre, Videogame } = require('./db.js');
+
 
 require('./db.js');
 
@@ -31,5 +33,10 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+
+
+
+
 
 module.exports = server;
