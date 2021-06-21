@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import fetch from 'node-fetch';
 import { Link } from 'react-router-dom';
+import './VideogameDetail.css';
 
 export function VideogameDetail({ id }) {
 
@@ -37,30 +38,43 @@ export function VideogameDetail({ id }) {
     let key = 0
 
     return (
-        <div>
+        <div className='detailContainer'>
             <Link to='/home'>
-                <button>Home</button>
+                <button className='detailHomeLink'>Home</button>
             </Link>
+            <div className='detailContent'>
 
-            <h1>{details.name}</h1>
-            <img src={details.img} alt="" />
+                <img src={details.img} alt="" />
 
-            <p>Description: {details.description}</p>
-            <h3>Released: {details.released}</h3>
-            <h4>Rating: {details.rating}</h4>
+                <h1 className='font'>{details.name}</h1>
 
-            {details.genres ? <h3>Genres: </h3> : null}
-            <div>
-            {details.genres ? details.genres.map((e) =>{
-                return(<div key={key += 1}>{e}</div>)
-            }) : null}
-            </div>
+                {details.description ? <p className='detailDescription'>{details.description.replace(/(<([^>]+)>)/ig, '')}</p> : null}
 
-            {details.platforms ? <h3>platforms: </h3> : null}
-            <div>
-                {details.platforms ? details.platforms.map( (e) =>{
-                    return(<div key={key += 1}>{e}</div>)
-                }) : null}
+                <div className='detailGenresRating'>
+
+                <div className='detailGenres'>
+                    {details.genres ? <h4 className='font'>Genres: </h4> : null}
+                    {details.genres ? details.genres.map((e) => {
+                        return (<p className='detailGenre' key={key += 1}>{e}</p>)
+                    }) : null}
+                </div>
+
+                <div className='detailRating font'>
+                   <h4>Rating:</h4> <span>{details.rating}</span>
+                </div>
+                <div className='detailReleased'>
+                    <h4 className='font'>Released: <span>{details.released}</span></h4>
+                    </div>
+                </div>
+
+
+
+                <div className='detailPlatforms'>
+                {details.platforms ? <h4 className='font'>platforms: </h4> : null}
+                    {details.platforms ? details.platforms.map((e) => {
+                        return (<div className='detailPlatform' key={key += 1}>{e}</div>)
+                    }) : null}
+                </div>
             </div>
 
         </div>

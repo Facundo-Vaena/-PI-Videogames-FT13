@@ -6,3 +6,29 @@
         
 }
 
+.searchInput{
+    padding:4px;
+    border-left: 10%;
+    font-family: 'Ubuntu', sans-serif;
+    filter: brightness(100%);
+}
+
+.searchSubmit{
+    padding:4px;
+    border-radius: 10%;
+    filter: brightness(100%);
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+.notFound{
+    /* color:#ffffff; */
+color: red;
+background-color: black;
+margin-left: 30%;
+margin-right: 30%;
+padding-bottom:1%;
+padding-top:1%;
+border-radius: 6%;
+}

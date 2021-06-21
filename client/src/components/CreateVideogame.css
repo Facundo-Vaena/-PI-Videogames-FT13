@@ -1,0 +1,217 @@
+.creationContainer{
+    height: 100%;
+    background-color:#042340;
+    padding-bottom: 40%;
+    
+}
+
+.creationSubcontainer{
+    background-color: #070606;
+    display: inline-block;
+    padding-top: 2%;
+    border-radius: 2%;
+    /* box-shadow: -5px 10px 49px 28px rgba(183,30,30,0.75);
+    -webkit-box-shadow: -5px 10px 49px 28px rgba(183,30,30,0.75);
+    -moz-box-shadow: -5px 10px 49px 28px rgba(183,30,30,0.75)*/ 
+    
+ /* background: #4FBA95; */
+ background: #0455bf
+/* background: #F39C4B; */
+/* background: linear-gradient(359deg,#130a0a 0%, #3498db 80%);
+background: -webkit-linear-gradient(359deg,#130a0a 0%, #3498db 80%);
+background: -moz-linear-gradient(359deg,#130a0a 0%, #3498db 80%);
+box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
+/* -webkit-box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
+}
+
+.formTop{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    margin-right:-3%;
+    margin-left:-3%;
+}
+
+
+.formBottom{
+    display: flex;
+    flex-direction: row;
+    
+    margin-left: 20%;
+    margin-bottom:2%
+}
+
+.platform{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10%;
+}
+.genre{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.creationTitle{
+    color: #ffffff;
+    /* font-family: 'Ubuntu', sans-serif; */
+    font-family: 'Teko', sans-serif;
+    font-size: 60px;
+    margin-bottom: 5%;
+}
+.validationError{
+    color: rgb(226, 67, 67);
+    
+}
+
+.creationHomeLink{
+    display: flex;
+    justify-content: flex-start;
+    margin-left:2%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10%;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 8%;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  
+  color: #ffffff;
+
+}
+
+.submit{
+    margin-top: -3px;
+    margin-left: 90%;
+    margin-bottom: 10px;
+    /* background-color:#c55555;  */
+    background-color: #f24141;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10%;
+    padding: 8px;
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+.addButtons{
+    display:flex;
+    justify-content: center;
+    margin-left: 7%;
+    margin-top: 2%;
+
+    
+    
+}
+
+.select{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 8px;
+    border-radius:4px ;
+    cursor: pointer;
+
+}
+
+.addGenre{
+    margin-right:11%;
+    border-radius: 10%;
+    background-color:#042340;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+  color: #ffffff;
+    
+
+}
+.addPlatform{
+    margin-right:13%;
+    border-radius: 10%;
+    background-color:#042340;
+    padding:8px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+  color: #ffffff;
+}
+
+.options{
+    display: flex;
+    justify-content: center;
+    gap:5%;
+    margin-left:3%;
+    margin-top:.5%
+}
+
+/* .genresOptions{
+    
+} */
+
+.removeButtons{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    gap:6%;
+    
+    
+
+}
+.removePlatform{
+    margin-right: 2.5%;
+    margin-left: -3%;  
+    margin-right:11%;
+    border-radius: 10%;
+    background-color:#0c0707;
+    padding: 8px;
+    font-family: 'Ubuntu', sans-serif;
+
+  
+  color: #ffffff; 
+}
+.removeGenre{
+    margin-right: 5.5%;
+    margin-left: -3%;
+    margin-right:11%;
+    border-radius: 10%;
+    background-color:#0c0707;
+    padding: 8px;
+    font-family: 'Ubuntu', sans-serif;
+  
+  color: #ffffff;
+}
+
+.form{
+    color:#ffffff
+}
+.form input{
+    /* background-color:#4c7296; */
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px, 0;
+    outline: none;
+    padding:6px;
+    box-sizing:border-box;
+    transition:.3s;
+    
+}
+ .form input[text]:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+.rating{
+    margin-right:4%;
+}
+
+
+ ::placeholder{
+    color: #bdb7b7;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.form label{
+color: transparent;
+}

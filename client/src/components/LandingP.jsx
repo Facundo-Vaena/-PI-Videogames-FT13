@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import './LangingP.css'
 // import { connect } from 'react-redux'
 // import { getVideogames } from '../actions/index'
 // import { useEffect } from 'react';
@@ -9,13 +10,26 @@ import { Link } from 'react-router-dom';
 export default function LandingP(){
 
 
-  return(<div>
+  return(<div >
 
-      <h1>VIDEOGAMES</h1>
+      {/* <div className='landingSubcontainer'>
+    
+    { <img className='landingImg' src="https://s1.1zoom.me/big3/916/348823-blackangel.jpg" alt="" />}
+    
+      </div> */}
+
+      {/* <img src="https://k60.kn3.net/taringa/3/D/3/E/D/A/FGF98/65C.jpg" className='langinImg' alt="" /> */} 
       
+      <div className='landingSubcontainer'>
+      <h1 className='landingTitle'><sup>H</sup>enry Videogames</h1>
+       {/* <img className='landingImg' src="https://s1.1zoom.me/big3/916/348823-blackangel.jpg" alt="" /> */}
+
+
       <Link to={'/home'}>
-        <button>HOME</button> 
-      </Link>
+        <button className='landingButton'>HOME</button> 
+      </Link> 
+      </div>
+      
      
 
   </div>)

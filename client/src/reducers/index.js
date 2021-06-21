@@ -2,7 +2,6 @@ import { GET_VIDEOGAMES, GET_GENRES, GET_ID, EMPTY_VIDEOGAMES } from '../actions
 
 const initialState = {
     videogames: [],
-    videogamesSearch: [],
     videogameDetail: {},
     genres: [],
     id: 3498
@@ -44,36 +43,3 @@ export default function rootReducer(state = initialState, action) {
     }
 }
 
-// export default function rootReducer(state = initialState, action) {
-//     switch (action.type) {
-
-//         case ADD_MOVIE_FAVORITE:
-//             return {
-//                 ...state,
-//                 moviesFavourites: [...state.moviesFavourites, action.payload]
-//             };
-
-//         case GET_MOVIES:
-//             return {
-//                 ...state,
-//                 moviesLoaded: action.payload.Search
-//             };
-
-//         case GET_MOVIE_DETAIL:
-//             return {
-//                 ...state,
-//                 movieDetail: action.payload 
-//             };
-
-//         case REMOVE_MOVIE_FAVORITE:
-//             const newFavourite = state.moviesFavourites.filter((movie) => 
-//             movie.imdbID !== action.payload.id)
-//             return {
-//                 ...state,
-//                 moviesFavourites: newFavourite
-//             };
-
-//         default:
-//             return state;
-//     }
-// }

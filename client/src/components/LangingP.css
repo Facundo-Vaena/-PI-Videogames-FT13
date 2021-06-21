@@ -1,0 +1,79 @@
+.landingSubcontainer{
+    /* background-color: red; */
+    /* width: 1515px;
+    height: 200%; */
+    /* background-image: url('../landingImages/imgPI.jpg'); */
+    /* background-image: url(''); */
+
+    /* background-image: url(../landing\ images/);
+    background-image: url(../landing\ images/);
+    background-image: url(../landing\ images/);
+    background-image: url(../landing\ images/);
+    background-image: url(../landing\ images/); */
+    /* background: url('../landingImages/unnamed.jpg') 0px, no-repeat; */
+    box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
+    background: url('../landingImages/wp3562164.jpg');
+
+    height: 753px;
+}
+/* body{
+    background: url('https://s1.1zoom.me/big3/916/348823-blackangel.jpg');
+} */
+
+
+/* .landingSubcontainer img{
+    width: 90%;
+    height: 100%;
+} */
+
+.landingTitle{
+    
+    position: absolute;
+    color: #1f1313;
+    filter: brightness(100%);
+    left:550px;
+    top:80px;
+    /* font-family: 'Ubuntu', sans-serif; */
+    /* font-family: 'Alegreya', serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Teko', sans-serif;
+    font-size: 100px;    
+    
+}
+.landingTitle h1{
+    /* color: rgb(15, 126, 120); */
+    color: #514d4d;
+    position: absolute;
+    left:400px;
+    top:10px;
+}
+.landingTitle sup{
+    /* color: rgb(255, 255, 1); */
+    color: #ffff00c4;
+    position:absolute;
+    left:-42px;
+    top:15px;
+}
+.landingButton{
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    right: 700px;
+    top:380px;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #1f1313;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.landingButton:hover {
+    background-color: #35343b;
+
+}
+
+.landingImg{
+    width: 100%;
+    
+}

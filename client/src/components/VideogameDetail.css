@@ -1,0 +1,92 @@
+.detailContainer{
+    background-color:#042340;
+}
+
+.font{
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+.detailContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left:20%;
+    margin-top:2%;
+    width: 60%;
+    box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);
+-webkit-box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);
+-moz-box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);
+    color:#ffffff;
+    height:2%
+}
+.detailContent img{
+   max-width: 100%;
+   max-height: 900px;
+
+}
+.detailHomeLink{
+    display: flex;
+    justify-content: flex-start;
+    margin-left:4%;
+    padding: 10px;
+    border-radius: 10%;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 8%;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  
+  color: #ffffff;
+
+}
+
+.detailDescription{
+line-height:160% ;
+margin: 0 2% 0 2%
+}
+
+.detailGenresRating{
+    display: flex;
+    
+}
+
+.detailGenres{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5%;
+    gap: 2%;
+}
+.detailGenre{
+    margin-top: 10.3%;
+}
+.detailRating{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3%;
+    /* margin-top: 0.4%; */
+    margin-left:21%
+}
+.detailRating span{
+    margin-top: 26%;
+    margin-left:10%;
+}
+
+.detailReleased{
+display: flex;
+margin-left: 20%;
+}
+.detailPlatforms{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+    gap:1%
+}
+.detailPlatform{
+    margin-top:2%;
+    margin: left 2%;
+    
+}

@@ -20,7 +20,7 @@ export function Videogame({ idVideogame, name, genres, img, getId,  }) {
     return (<div className='container'>
         <div className='card'>
             <img className='img' src={img} alt="" />
-            <h3>{name}</h3>
+            <h3 className='videogameTitle'>{name}</h3>
             
             <div >
              {genres ? <p className='genres'>Genres: </p> : null}

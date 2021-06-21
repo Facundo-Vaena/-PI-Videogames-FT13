@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import Videogame from './Videogame';
 import { connect } from 'react-redux';
 import { emptyVideogames } from '../actions';
+import { Link } from 'react-router-dom';
 import './SearchBar.css'
 
 export function SearchBar({ videogames, emptyVideogames }) {
@@ -14,34 +15,39 @@ export function SearchBar({ videogames, emptyVideogames }) {
         fetch(`http://localhost:3001/videogames?search=${name}`)
             .then(res => res.json())
             .then(res => {
-                return setArray(res)
+                 setArray(res)
+                 document.getElementById('searchInputId').value = '';
             })
 
 
     }
-    function nada() {
-        while (videogames.length) {
-            videogames.pop()
-        }
-        return
-    }
+    
 
 
-    return (<div className='searchContainer'>
-        <div >
+    return (<div>
+
+
+            {/* <button className='creationHomeLink' onClick={()=> window.history.back()} >Home</button> */}
+        
+
+        <div>
             <form onSubmit={e => {
                 e.preventDefault();
                 search(games);
-                nada()
+                
             }}
 
             >
+                <div >
                 <input
+                    className='searchInput'
+                    id='searchInputId'
                     type="search"
                     placeholder='Videogame...'
                     onChange={e => setGames(e.target.value)}
                 />
-                <input type='submit' value='search' />
+                <input className='searchSubmit' type='submit' value='search' />
+                </div>
             </form>
             <div>
                 {
@@ -55,7 +61,7 @@ export function SearchBar({ videogames, emptyVideogames }) {
 
                         }
 
-                    }) : <h1>Videogame Not Found</h1>
+                    }) : <h1 className='notFound'>Videogame Not Found</h1>
                 }
 
             </div>

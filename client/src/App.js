@@ -5,24 +5,25 @@ import Home from './components/Home';
 import SearchBar from './components/SearchBar'
 import CreateVideogame from './components/CreateVideogame';
 import VideogameDetail from './components/VideogameDetail'
-{/* <BrowserRouter>
- 
 
-</BrowserRouter> */}
 
 
 
 function App() {
   return (
-    <div className="App">
-      {/* <h1>Henry Videogames</h1> */}
+      <div className='App'>
+      <BrowserRouter>
       <Route path='/createvideogame' component={CreateVideogame}/>
       {/* <Route path='/home' component={SearchBar}/> */}
       <Route  path='/' exact component={LandingP}/>
-      <Route exact path='/home' exact component={Home} />
+      <Route exact path='/home' component={Home} />
       <Route path='/videogamedetail' component={VideogameDetail} />
-    </div>
-  );
+      </BrowserRouter>
+      </div>)
+  
 }
 
 export default App;
+// {/* <h1>Henry Videogames</h1> */}
+//       {/* <Router> */}
+//       {/* </Router> */}
