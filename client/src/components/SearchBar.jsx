@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
-import fetch from 'node-fetch';
+import axios from 'axios'
 import Videogame from './Videogame';
 import { connect } from 'react-redux';
 import { emptyVideogames, setResults } from '../actions';
-import { Link } from 'react-router-dom';
 import './SearchBar.css'
 
-export function SearchBar({ videogames, emptyVideogames, setResults }) {
+export function SearchBar({  emptyVideogames, setResults }) {
     const [games, setGames] = useState('');
     const [array, setArray] = useState([]);
 
+    // function search(name) {
+    //     emptyVideogames()
+    //     fetch(`http://localhost:3001/videogames?search=${name}`)
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             setResults(res.length)
+    //              setArray(res)
+    //              document.getElementById('searchInputId').value = '';
+    //         })
+
+
+    // }
+    
     function search(name) {
         emptyVideogames()
-        fetch(`http://localhost:3001/videogames?search=${name}`)
-            .then(res => res.json())
-            .then(res => {
+        axios.get(`/videogames?search=${name}`)
+            // .then(res => res.json())
+            .then(response => {
+                let res = response.data
                 setResults(res.length)
                  setArray(res)
                  document.getElementById('searchInputId').value = '';
@@ -22,7 +35,6 @@ export function SearchBar({ videogames, emptyVideogames, setResults }) {
 
 
     }
-    
 
 
     return (<div className='searchContainer'>

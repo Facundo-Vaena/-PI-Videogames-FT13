@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getId } from '../actions'
-import fetch from 'node-fetch';
 import { Link } from 'react-router-dom';
 import './Videogame.css';
 //recibe x props img, name y genres y DEBERIA id

@@ -1,5 +1,5 @@
 import React from 'react'
-import fetch from 'node-fetch'
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -19,7 +19,33 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
 
     useEffect(() => {
         getGenres()
+         // eslint-disable-next-line
     }, [])
+
+    // async function handleSubmit() {
+    //     alert(`${newGame.name} Created!`)
+    //     try {
+    //         let config = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(newGame)
+    //         }
+    //         let res = await fetch('http://localhost:3001/videogames', config)
+    //         let json = await res.json()
+    //         // document.getElementById('form').reset();
+
+    //         // console.log(json);
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    //     }
+
+
+
+    // }
 
     async function handleSubmit() {
         alert(`${newGame.name} Created!`)
@@ -32,8 +58,8 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
                 },
                 body: JSON.stringify(newGame)
             }
-            let res = await fetch('http://localhost:3001/videogames', config)
-            let json = await res.json()
+             await axios.get('/videogames', config)
+            // let json = await res.json()
             // document.getElementById('form').reset();
 
             // console.log(json);
@@ -45,6 +71,7 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
 
 
     }
+
 
     function deleteElement(arg) {
         if (arg === 'genre') {
@@ -244,8 +271,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(CreateVideogame)
 
 
 
-//input platforms
-{/* <input type="text" name='Platforms' onChange={e => setNewGame({ ...newGame, platforms: e.target.value })} required /> */ }
 
 
 

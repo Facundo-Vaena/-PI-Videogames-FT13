@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import fetch from 'node-fetch';
 import { connect } from 'react-redux';
 import { getVideogames } from '../actions/index';
 import { getGenres } from '../actions/index'
@@ -26,7 +25,7 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
     useEffect(() => {
         getVideogames();
         getGenres();
-
+ // eslint-disable-next-line
     }, [])
 
     function preGetVideogames() {
@@ -161,7 +160,7 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
 
 
             <div className='videogames'>
-                {videogames.length ?
+                {videogames.length &&
                     videogames.slice(page, (page + 15)).map(e => {
                         return (
                             <div>
@@ -177,7 +176,7 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
                             </div>
                         )
                     }
-                    ) : <h1></h1>
+                    ) 
                 }
 
             </div>
@@ -235,17 +234,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 // }
 
-
-{/* {
-                videogames.map(e =>{
-                    return(
-                    <div key={e.id}>
-                        <div>{e.name}</div>
-                        <div>{e.img}</div>
-
-                    </div>
-                    )
-                    
-                })
-
-            } */}

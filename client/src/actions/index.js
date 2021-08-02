@@ -1,5 +1,4 @@
-import fetch from 'node-fetch';
-
+import axios from 'axios'
 export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
 export const GET_GENRES = 'GET_GENRES';
 // export const GET_DETAILS = 'GET_DETAILS';
@@ -7,23 +6,57 @@ export const GET_ID = 'GET_ID';
 export const EMPTY_VIDEOGAMES = 'EMPTY_VIDEOGAMES'
 export const SET_RESULTS = 'SET_RESULTS'
 
+// export function getVideogames(order, filter) {
+//     return function (dispatch) {
+//         return fetch('http://localhost:3001/videogames')
+//             .then(res => res.json())
+//             .then(res => {
+//                 if (filter && order) {
+//                     var filtered = filtering(res, filter);
+//                     var sorted = sorting(filtered, order)
+//                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
+//                 }
+//                 if (filter && !order) {
+//                     var filtered = filtering(res, filter);
+//                     dispatch({type: GET_VIDEOGAMES, payload: filtered})
+
+//                 }
+//                 if (!filter && order) {
+//                     var sorted = sorting(res, order)
+//                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
+
+//                 }
+//                 if (!filter && !order) {
+//                     dispatch({type: GET_VIDEOGAMES, payload: res})
+
+//                 }
+                
+//             })
+
+
+
+
+//     }
+// }
+
 export function getVideogames(order, filter) {
     return function (dispatch) {
-        return fetch('http://localhost:3001/videogames')
-            .then(res => res.json())
-            .then(res => {
+        return axios.get('/videogames')
+            // .then(res => res.json())
+            .then(response => {
+                let res = response.data
                 if (filter && order) {
-                    var filtered = filtering(res, filter);
-                    var sorted = sorting(filtered, order)
+                    let filtered = filtering(res, filter);
+                    let sorted = sorting(filtered, order)
                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
                 }
                 if (filter && !order) {
-                    var filtered = filtering(res, filter);
+                    let filtered = filtering(res, filter);
                     dispatch({type: GET_VIDEOGAMES, payload: filtered})
 
                 }
                 if (!filter && order) {
-                    var sorted = sorting(res, order)
+                    let sorted = sorting(res, order)
                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
 
                 }
@@ -40,24 +73,26 @@ export function getVideogames(order, filter) {
     }
 }
 
-function filtering(videogames, filter) {
-    if (filter !== 'onlyCreated' && filter !== 'hideCreated' ) {
-        return videogames.filter(e => {
+function filtering(videogames, filtering) {
+    if (filtering !== 'onlyCreated' && filtering !== 'hideCreated' ) {
+        // eslint-disable-next-line
+        let info = videogames.filter(e => {
             for (var i = 0; i < e.genres.length; i++) {
-                return e.genres[i] === filter
+               return e.genres[i] === filtering
             }
         })
+        return info
         
         
     }
-    if (filter === 'onlyCreated') {
+    if (filtering === 'onlyCreated') {
         return videogames.filter(e => {
             return e.created === true
         })
         
         
     }
-    if (filter === 'hideCreated') {
+    if (filtering === 'hideCreated') {
         return videogames.filter(e => {
             return !e.created
         })
@@ -109,14 +144,26 @@ function sorting(videogames, order){
 
 
 
+
+// export function getGenres() {
+//     return function (dispatch) {
+//         return fetch('http://localhost:3001/genres')
+//             .then(res => res.json())
+//             .then(res => dispatch({ type: GET_GENRES, payload: res }))
+//     }
+// }
+
 export function getGenres() {
     return function (dispatch) {
-        return fetch('http://localhost:3001/genres')
-            .then(res => res.json())
-            .then(res => dispatch({ type: GET_GENRES, payload: res }))
+        return axios.get('/genres')
+            // .then(res => res.json())
+            .then(response =>
+                {
+                    let res = response.data
+                    dispatch({ type: GET_GENRES, payload: res })
+                })
     }
 }
-
 
 
 export function getId(id) {

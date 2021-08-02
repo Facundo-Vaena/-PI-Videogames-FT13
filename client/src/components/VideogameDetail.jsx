@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import fetch from 'node-fetch';
+import axios from 'axios'
 import { Link } from 'react-router-dom';
 import './VideogameDetail.css';
 import { CircularProgress } from '@material-ui/core';
@@ -26,14 +26,21 @@ export function VideogameDetail({ id }) {
     useEffect(() => {
         // det(3498) //id de GTA
         // det(id)
-        fetch(`http://localhost:3001/videogames/${id}`)
-            .then(res => res.json())
-            .then(res => {
-                setDetails(res)
+        // fetch(`http://localhost:3001/videogames/${id}`) SI HAY QUE DESCOMENTAR, SOLO DESCOMENTAR EL FETCH (NI LO DE ARRIBA NI LO DE ABAJO COMENTADO)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         setDetails(res)
 
+        //     })
+        axios.get(`/videogames/${id}`)
+            // .then(res => res.json())
+            .then(response => {
+                let res = response.data
+                setDetails(res)
+               
             })
         //.catch( err => console.log(err))
-
+             // eslint-disable-next-line
     }, [])
 
     let key = 0

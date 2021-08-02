@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import LandingP from './components/LandingP';
 import Home from './components/Home';
-import SearchBar from './components/SearchBar'
 import CreateVideogame from './components/CreateVideogame';
 import VideogameDetail from './components/VideogameDetail'
 
