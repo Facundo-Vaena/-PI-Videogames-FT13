@@ -1,7 +1,8 @@
 .creationContainer{
     height: 100%;
     background-color:#042340;
-    padding-bottom: 40%;
+    /* padding-bottom: 40%; */
+    padding-bottom: 15.6%;
     
 }
 
@@ -62,6 +63,8 @@ box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
 }
 .validationError{
     color: rgb(226, 67, 67);
+    margin-right: 3%;
+    background-color: rgb(53, 50, 50);
     
 }
 
@@ -146,9 +149,7 @@ box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
     margin-top:.5%
 }
 
-/* .genresOptions{
-    
-} */
+
 
 .removeButtons{
     display: flex;
@@ -156,13 +157,14 @@ box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
     margin-top: 2%;
     margin-bottom: 2%;
     gap:6%;
+    margin-left:10%;
     
     
 
 }
 .removePlatform{
     margin-right: 2.5%;
-    margin-left: -3%;  
+    margin-left: -4%;  
     margin-right:11%;
     border-radius: 10%;
     background-color:#0c0707;
@@ -174,14 +176,14 @@ box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
 }
 .removeGenre{
     margin-right: 5.5%;
-    margin-left: -3%;
-    margin-right:11%;
+    margin-left: -5%;
+    margin-right:9%;
     border-radius: 10%;
     background-color:#0c0707;
     padding: 8px;
     font-family: 'Ubuntu', sans-serif;
-  
-  color: #ffffff;
+    color: #ffffff;
+
 }
 
 .form{
@@ -214,4 +216,10 @@ box-shadow: -3px 10px 96px 0px rgba(0,0,0,0.75); */
 
 .form label{
 color: transparent;
+}
+.platformsOptions{
+    margin-right:4%;
+}
+.genresOptions{
+    margin-left: 4%;
 }

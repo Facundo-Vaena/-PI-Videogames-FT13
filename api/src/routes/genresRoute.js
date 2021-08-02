@@ -5,15 +5,17 @@ const { conn } = require('../db');
 const Sequelize = require('sequelize');
 const { Genre } = require('../db.js')
 const { v1: uuid, v1} = require('uuid');
-
-
+require('dotenv').config();
+const { API_KEY } = process.env
+// const {API_KEY} = require('./const')
+// const { apiKey } = require('../db.js')
 router.get('/', (req, res) => {
     Genre.findAll()
         .then(resp => {
             if (resp.length > 0) {
                 return resp
             } else{
-                return fetch(`https://api.rawg.io/api/genres?key=f94de48cdec544d2b0b550d320afe33a`)
+                return fetch(`https://api.rawg.io/api/genres?key=${API_KEY}`)
             }
 
         })
@@ -53,55 +55,6 @@ router.get('/', (req, res) => {
         
 
 })
-
-
-
-//INTENTO QUE FUNCIONA BIEN, FALTA EL STATEMENT
-// router.get('/', (req, res) => {
-
-    // router.get('/', (req, res) => {
-    //     Genre.findAll()
-    //         .then(resp => {
-    //             if (resp.length) {
-    //                 return resp
-    //             }
-    //             return fetch(`https://api.rawg.io/api/genres?key=f94de48cdec544d2b0b550d320afe33a`)
-    
-    //         })
-    
-    //         .then(resp =>{
-    //             if(Array.isArray(resp)){
-    //                 return resp
-    //             }
-    //             return resp.json()
-    //         })
-    //         .then(resp => {
-    //             if(Array.isArray(resp)){
-    //                 return resp
-    //             }
-    //             resp.results.forEach(e => {
-    //                 Genre.create({
-    //                     name: e.name
-    //                 })
-    //             })
-    //         })
-    //         .then((resp) => {
-    //             if(Array.isArray(resp)){
-    //                 return resp
-    //             }
-    //             return Genre.findAll()
-    //         })
-    //         .then(resp => res.json(resp))
-    //         .catch(err => console.log(err));
-            
-    
-    
-    
-    // })
-
-
-
-
 
 
 module.exports = router;

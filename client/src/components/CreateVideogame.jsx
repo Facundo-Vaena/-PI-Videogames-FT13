@@ -14,15 +14,15 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
     const [newGame, setNewGame] = useState({ genres: [], platforms: [] })
     const [newGenre, setNewGenre] = useState([]);
     const [newPlatform, setNewPlatform] = useState([]);
-    const [error, setError] = useState('');
-
+    const [nameError, setNameError] = useState('');
+    const [ratingError, setRatingError] = useState('');
 
     useEffect(() => {
         getGenres()
     }, [])
 
     async function handleSubmit() {
-        alert('Videogame Created!')
+        alert(`${newGame.name} Created!`)
         try {
             let config = {
                 method: 'POST',
@@ -34,6 +34,7 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
             }
             let res = await fetch('http://localhost:3001/videogames', config)
             let json = await res.json()
+            // document.getElementById('form').reset();
 
             // console.log(json);
         }
@@ -65,23 +66,24 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
             return e.name === value
         })
         if(repetedName.length){
-            setError('This name already exists!')
+            setNameError('This name already exists!')
         } else{
-            setError('');
+            setNameError('');
         }
         setNewGame({ ...newGame, name: value })
 
     }
-    // function validateDate(value){
-    //     var dateReg = new RegExp(['^(?:(?:(?:0?[13578]|1[02])(\\/|-|\\.)31)',             '\\1|(?:(?:0?[1,3-9]|1[0-2])(\\/|-|\\.)(?:29|30)',             '\\2))(?:(?:1[6-9]|[2-9]\\d)?\d{2})$|^(?:0?2(\\/|-|\\.)',             '29\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|',             '[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))',             '$|^(?:(?:0?[1-9])|(?:1[0-2]))(\\/|-|\\.)',             '(?:0?[1-9]|1\\d|2[0-8])\\4',             '(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$'].join(''),"g");
-    //     if(!dateReg.test(value)){
-    //         setError('Non valid date!')
-    //     } else{
-    //         setError('');
-    //     }
-    //     setNewGame({ ...newGame, released: value });
+    function validateRating(value){
+        if(value > 5 || value < 0){
+            setRatingError('Only numbers between 0 and 5!');
+        } else{
+            setRatingError('');
+        }
+        setNewGame({...newGame, rating: value})
+    }
 
-    // }
+    
+   
 
 
 
@@ -99,7 +101,8 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
 
         <form className='form' id='form' onSubmit={e => {
             e.preventDefault();
-            handleSubmit()
+            handleSubmit();
+            // document.getElementById('form').reset();
 
         }} >
             <button className='submit' type='submit'>Create!</button>
@@ -107,7 +110,7 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
                 <label for='Name'>Name: </label>
                 <input type="text" name='Name' placeholder='Name...' onChange={e => validateName(e.target.value) } required />
                 
-                {error.length ? <span className='validationError'>{error}</span> : null}
+                {nameError.length ? <span className='validationError'>{nameError}</span> : null}
                 
                 <label for='Description'>Description: </label>
                 <input type="text" name='Description' placeholder='Description...' onChange={e => setNewGame({ ...newGame, description: e.target.value })} required />
@@ -117,7 +120,8 @@ export function CreateVideogame({ genres, getGenres, videogames }) {
                 {/* <input type="date" name='Released' placeholder='Released...' onChange={e =>validateDate(e.target.value)} required /> */}
 
                 <label for='Rating'>Rating: </label>
-                <input className='rating' type="number" name='Rating' step="any" placeholder='Rating...' onChange={e => setNewGame({ ...newGame, rating: e.target.value })} required />
+                <input className='rating' type="number" name='Rating' step="any" placeholder='Rating...' onChange={e => validateRating(e.target.value)} required />
+                {ratingError.length ? <span className='validationError'>{ratingError}</span> : null}
             </div>
             <div className='formBottom'>
 

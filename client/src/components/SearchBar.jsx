@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import fetch from 'node-fetch';
 import Videogame from './Videogame';
 import { connect } from 'react-redux';
-import { emptyVideogames } from '../actions';
+import { emptyVideogames, setResults } from '../actions';
 import { Link } from 'react-router-dom';
 import './SearchBar.css'
 
-export function SearchBar({ videogames, emptyVideogames }) {
+export function SearchBar({ videogames, emptyVideogames, setResults }) {
     const [games, setGames] = useState('');
     const [array, setArray] = useState([]);
 
@@ -15,6 +15,7 @@ export function SearchBar({ videogames, emptyVideogames }) {
         fetch(`http://localhost:3001/videogames?search=${name}`)
             .then(res => res.json())
             .then(res => {
+                setResults(res.length)
                  setArray(res)
                  document.getElementById('searchInputId').value = '';
             })
@@ -24,7 +25,7 @@ export function SearchBar({ videogames, emptyVideogames }) {
     
 
 
-    return (<div>
+    return (<div className='searchContainer'>
 
 
             {/* <button className='creationHomeLink' onClick={()=> window.history.back()} >Home</button> */}
@@ -82,7 +83,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        emptyVideogames: () => dispatch(emptyVideogames())
+        emptyVideogames: () => dispatch(emptyVideogames()),
+        setResults: (num) => dispatch(setResults(num))
     }
 }
 

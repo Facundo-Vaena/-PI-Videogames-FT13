@@ -1,16 +1,5 @@
 .landingSubcontainer{
-    /* background-color: red; */
-    /* width: 1515px;
-    height: 200%; */
-    /* background-image: url('../landingImages/imgPI.jpg'); */
-    /* background-image: url(''); */
-
-    /* background-image: url(../landing\ images/);
-    background-image: url(../landing\ images/);
-    background-image: url(../landing\ images/);
-    background-image: url(../landing\ images/);
-    background-image: url(../landing\ images/); */
-    /* background: url('../landingImages/unnamed.jpg') 0px, no-repeat; */
+   
     box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
 -webkit-box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
 -moz-box-shadow: -7px -5px 135px 18px rgba(0,0,0,0.75) inset;
@@ -18,15 +7,10 @@
 
     height: 753px;
 }
-/* body{
-    background: url('https://s1.1zoom.me/big3/916/348823-blackangel.jpg');
-} */
 
 
-/* .landingSubcontainer img{
-    width: 90%;
-    height: 100%;
-} */
+
+
 
 .landingTitle{
     

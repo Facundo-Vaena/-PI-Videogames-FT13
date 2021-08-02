@@ -5,6 +5,7 @@ export const GET_GENRES = 'GET_GENRES';
 // export const GET_DETAILS = 'GET_DETAILS';
 export const GET_ID = 'GET_ID';
 export const EMPTY_VIDEOGAMES = 'EMPTY_VIDEOGAMES'
+export const SET_RESULTS = 'SET_RESULTS'
 
 export function getVideogames(order, filter) {
     return function (dispatch) {
@@ -46,16 +47,21 @@ function filtering(videogames, filter) {
                 return e.genres[i] === filter
             }
         })
+        
+        
     }
     if (filter === 'onlyCreated') {
         return videogames.filter(e => {
             return e.created === true
         })
+        
+        
     }
     if (filter === 'hideCreated') {
         return videogames.filter(e => {
             return !e.created
         })
+        
     }
 }
 function sorting(videogames, order){
@@ -120,7 +126,12 @@ export function getId(id) {
     }
 }
 
-
+export function setResults(num){
+    return {
+        type: SET_RESULTS,
+        payload: num
+    }
+}
 
 export function emptyVideogames() {
     return {

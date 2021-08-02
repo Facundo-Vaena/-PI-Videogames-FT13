@@ -4,16 +4,43 @@ const fs = require('fs');
 const path = require('path');
 
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, API_KEY
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
 
+let sequelize =
+  process.env.NODE_ENV === "production"
+    ? new Sequelize({
+        database: DB_NAME,
+        dialect: "postgres",
+        host: DB_HOST,
+        port: 5432,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+        { logging: false, native: false }
+      );
 
 
-
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
 const basename = path.basename(__filename);
 
 sequelize.authenticate().then(()=> console.log('success')).catch(err => console.log(err))
@@ -38,46 +65,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Videogame, Genre } = sequelize.models;
 
 
-   //----------------------------------
-// const force = true;
-// db.sync({ force })
-//     .then(function () {
-//         app.listen(3001, function () {
-//             console.log('Server is listening on port 3001!');
 
-//          
-         
-//         });
-        
-//     });
-    //----------------------------------
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-// Page.belongsToMany(Category, {through: 'Page_Category'});
-// Category.belongsToMany(Page, {through: 'Page_Category'});
+
 Videogame.belongsToMany(Genre, {through: 'videogame_genre'});
 Genre.belongsToMany(Videogame, {through: 'videogame_genre'});
 
 
-// sequelize.sync({ force: true }).then(()=>{
-//    Videogame.create({
-//     name: 'CoD3',
-//     description: 'war game with shoots',
-//     released: 6-7-89,
-//     rating: 4.6,
-//     platforms: "PS3"
-//   });
-//   Genre.create({
-//     name: 'adventure'
-//   })
-// }).catch(err => console.log(err))
 
-// Genre.sync({ force: true }).then(() =>{
-//   return Genre.create({
-//     name: 'adventure'
-//   })
-// }).catch(err => console.log(err))
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

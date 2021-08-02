@@ -4,8 +4,15 @@
 
 # Individual Project - Henry Videogames
 
-<p align="right">
+<p align="center">
   <img height="200" src="./videogame.png" />
+</p>
+
+<p align='center'>
+<img src='./PI0.png' height='200' />
+<img src='./PI1.png' height='200' />
+<img src='./PI2.png' height='200' />
+<img src='./PI3.png' height='200' />
 </p>
 
 ## Objetivos del Proyecto

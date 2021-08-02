@@ -1,5 +1,6 @@
 .detailContainer{
     background-color:#042340;
+   
 }
 
 .font{
@@ -7,12 +8,18 @@
 
 }
 
+ .detailLoadingContainer{
+    padding-bottom: 40%;
+} 
+
+
 .detailContent{
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin-left:20%;
     margin-top:2%;
+    padding-bottom: -0px;
     width: 60%;
     box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);
 -webkit-box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);

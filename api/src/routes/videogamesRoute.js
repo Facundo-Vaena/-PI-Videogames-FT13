@@ -1,16 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const { conn } = require('../db');
+// const { conn } = require('../db');
 const Sequelize = require('sequelize');
 const { Videogame, Genre } = require('../db.js')
 const { v1: uuid, v1 } = require('uuid');
-
-//  const API_KEY  = process.env.API_KEY;
+const { API_KEY } = process.env
 
 router.use(express.json());
 
-// apiKey ----> f94de48cdec544d2b0b550d320afe33a
 
 router.get('/:idVideoGame', (req, res) => {
     //detalle del videojuego ingresado (id)
@@ -29,11 +27,11 @@ router.get('/:idVideoGame', (req, res) => {
                 gameDetails.released = resp.released
                 gameDetails.rating = resp.rating
                 gameDetails.platforms = resp.platforms.map(e => { return e })
-                gameDetails.genres = resp.genres.map(e => { return e.name })
+                // gameDetails.genres = resp.genres.map(e => { return e.name })
                 return gameDetails
             }
             else {
-                return fetch(`https://api.rawg.io/api/games/${req.params.idVideoGame}?key=f94de48cdec544d2b0b550d320afe33a`)
+                return fetch(`https://api.rawg.io/api/games/${req.params.idVideoGame}?key=${API_KEY}`)
 
             }
         })
@@ -57,12 +55,7 @@ router.get('/:idVideoGame', (req, res) => {
                 res.json(resp)
         })
         .catch(err => console.log(err));
-    // try {
-    //     const response = await fetch(`http://jsonplaceholder.typicode.com/users/4`)
-    //     res.json(response)
-    //   } catch(error){
-    //       console.log("no");
-    //   }
+    
 
 
 
@@ -91,6 +84,7 @@ router.post('/', (req, res) => {
         }, {
             include: 'genres'
         })
+
     }
 
     else if (name && !genres) {
@@ -120,7 +114,7 @@ router.get('/', (req, res) => {
 
     if (!search) {
         let games = [];
-        return fetch(`https://api.rawg.io/api/games?key=f94de48cdec544d2b0b550d320afe33a`)
+        return fetch(`https://api.rawg.io/api/games?key=${API_KEY}`)
             .then(resp => resp.json())
             .then(resp => {
 
@@ -249,13 +243,32 @@ router.get('/', (req, res) => {
 
     }
     if (search) {
-        return fetch(`https://api.rawg.io/api/games?key=f94de48cdec544d2b0b550d320afe33a&search=${search}`)
+        let games = [];
+        Videogame.findOne({
+            where: { name: search },
+            include: Genre
+        })
+            .then(resp => {
+
+                if (resp) {
+                    var game = {}
+                    game.id = resp.id
+                    game.name = resp.name
+                    game.img = 'https://designbro.com/blog/wp-content/uploads/image2-1.png'
+                    resp.genres.length ? game.genres = resp.genres.map(e => { return e.name }) : null
+                    games.push(game);
+                    return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
+
+                }
+                return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
+            })
+
             .then(resp => resp.json())
             .then(resp => {
                 if (resp.results.length) {
-                    var games = [];
+                    
                     for (var i = 0; i < resp.results.length; i++) {
-                        if (games.length > 14) break;
+                        if (games.length > 13) break;
                         var game = {}
                         game.id = resp.results[i].id
                         game.name = resp.results[i].name
@@ -278,292 +291,6 @@ router.get('/', (req, res) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//idVideogame que funciona bien sin ir a la bd
-// router.get('/:idVideoGame', (req, res) => {
-// fetch(`https://api.rawg.io/api/games/${req.params.idVideoGame}?key=f94de48cdec544d2b0b550d320afe33a`)
-//         .then(resp => resp.json())
-//         .then(resp => {
-//             var gameDetails = {};
-//             gameDetails.img = resp.background_image
-//             gameDetails.name = resp.name
-//             gameDetails.genres = resp.genres.map(e => { return e.name })
-//             gameDetails.description = resp.description
-//             gameDetails.released = resp.released
-//             gameDetails.rating = resp.rating
-//             gameDetails.platforms = resp.parent_platforms.map(e => { return e.platform.name })
-//             return gameDetails
-//         })
-//         .then(resp => {
-//             !resp.name ? res.send('Videogame not found') :
-//                 res.json(resp)
-//         })
-//         .catch(err => console.log(err));
-
-//     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//post que funciona bien (sin relacionar genres)
-
-// router.post('/', (req, res) => {
-//     const { name, description, released, rating, platforms, genres } = req.body;
-//     if (name) {
-//         Videogame.create({
-//             id: v1(),
-//             name,
-//             description,
-//             released,
-//             rating,
-//             platforms
-//         })
-//             // .then(() => {
-//             //     // return  Videogame.findAll() //Sólo para verificar que se están 
-//             //     //guardando en la bd
-
-//             // })
-//             // .then(() =>{
-//             //     genres.length ? genres.map(e =>{
-//             //         return Genre.create({
-//             //             id: v1(),
-//             //             name: e
-//             //         })
-//             //     })
-//             // : res.send('aca') })
-//             .then(() =>{
-//                 if(genres.length){
-//                     Genre.create({
-//                         id: v1(),
-//                         name: genres
-//                     })
-//                 }
-//                 return
-//             })
-//             .then(() => {
-//                 return res.json(true)
-//             })
-//             .catch(err => console.log(err))
-//     }
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-//GET a /videogames sin search que funciona (sin traer los juegos creados)
-
-//if (!search) {
-// return fetch(`https://api.rawg.io/api/games?key=f94de48cdec544d2b0b550d320afe33a`)
-//     .then(resp => resp.json())
-//     .then(resp => {
-
-//         var games = [];    
-
-//         for (var i = 0; i < resp.results.length; i++) {
-//             if (games.length > 14) break;
-//             var game = {};
-//             game.id = resp.results[i].id
-//             game.name = resp.results[i].name
-//             game.img = resp.results[i].background_image;
-//             // game.genres = resp.results[i].genres;
-//             games.push(game)
-//         }
-//         return games
-//         //while (games.length !== 15) {
-
-//         // let game = {};
-//         //resp.results.map(e => {
-//         // game.id = e.id
-//         // game.name = e.name;
-//         // game.img = e.background_image;
-//         // game.genres = e.genres;
-//         // return game
-
-//         //})
-//         // games.push(game)
-//         //}
-
-//     })
-
-//     .then(resp => {
-//         return res.json(resp)
-//     })
-
-//     .catch(err => console.log(err))
-
-
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.post('/', (req, res) => { //Comenté la plataforma porque el enunciado no la menciona 
-//     const { name, description, released, rating, platforms } = req.body;
-//     Videogame.create({
-//         id: v1(),
-//         name,
-//         description,
-//         released,
-//         rating,
-//         platforms
-//     }).then(() => {
-//         return Videogame.findAll() //Sólo para verificar que se están 
-//         //guardando en la bd
-
-//     })
-//         .then(resp => {
-//             res.json(resp)
-//         })
-
-// })
-
-
-//----------------------Prueba post
-
-// router.get('/', (req, res) => {
-//     //listado 1eros 15 juegos
-//     const { search } = req.query;
-//     if (!search) {
-//         return fetch(`https://api.rawg.io/api/games?key=f94de48cdec544d2b0b550d320afe33a`)
-//             .then(resp => resp.json())
-//             .then(resp => {
-
-//                 var games = [];
-//                 while (games.length !== 15) {
-//                     let game = {};
-
-//                     resp.results.forEach(e => {
-//                         game.name = e.name;
-//                         game.img = e.background_image;
-//                         game.genres = e.genres;
-
-
-//                     })
-//                     games.push(game)
-//                 }
-//                 return games
-
-//             })
-
-//             .then(resp => {
-//                 res.json(resp)
-//             })
-
-//             .catch(err => console.log(err))
-//     }
-//     return fetch(`https://api.rawg.io/api/games?key=f94de48cdec544d2b0b550d320afe33a&search=${search}`)
-//         .then(resp => resp.json())
-//         .then(resp => {
-//             var games = [];
-//             for(var i = 0; i < resp.results.length; i++){
-//                 if(games.length > 14) break;
-//                 var game = {}
-//                 game.name = resp.results[i].name
-//                 game.img = resp.results[i].background_image
-//                 // game.genres = resp.results[i].genres
-//                 games.push(game)
-//             }
-//             return games
-
-//         })
-//         .then(resp => {
-//             // !resp[0].name ?  res.send('Videogame not found') :
-//              res.json(resp)
-//         })
-//         .catch(err => console.log(err))
-
-// })
-
-
-
-
-
-// while (games.length < 10) {
-//     if(games.length === 14) break
-//     resp.results.forEach(e => {
-//         let game = {};
-//         game.name = e.name;
-//         game.img = e.background_image;
-//         game.genres = e.genres;
-
-//         games.push(game)
-//     })
-// }
-// return games
-
-// while (games.length !== 3) {
-//     results.forEach(e => {
-//     let game = {};
-//         game.name = e.name;
-//         game.img = e.background_image;
-//         game.genres = e.genres;
-
-//     games.push(game)
-//     })
-// }
 
 
 module.exports = router;

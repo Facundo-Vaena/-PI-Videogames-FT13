@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import fetch from 'node-fetch';
 import { Link } from 'react-router-dom';
 import './VideogameDetail.css';
+import { CircularProgress } from '@material-ui/core';
 
 export function VideogameDetail({ id }) {
 
@@ -42,7 +43,9 @@ export function VideogameDetail({ id }) {
             <Link to='/home'>
                 <button className='detailHomeLink'>Home</button>
             </Link>
-            <div className='detailContent'>
+            {!details.name ? <div className='detailLoadingContainer'><CircularProgress className='detailLoading'/></div> : <div className='detailContent'>
+
+                 
 
                 <img src={details.img} alt="" />
 
@@ -75,7 +78,7 @@ export function VideogameDetail({ id }) {
                         return (<div className='detailPlatform' key={key += 1}>{e}</div>)
                     }) : null}
                 </div>
-            </div>
+            </div>}
 
         </div>
     )
