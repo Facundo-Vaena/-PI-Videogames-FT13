@@ -113,182 +113,184 @@ router.get('/', (req, res) => {
     const { search } = req.query;
 
     if (!search) {
-        let games = [];
-        return fetch(`https://api.rawg.io/api/games?key=${API_KEY}`)
-            .then(resp => resp.json())
-            .then(resp => {
+        let games = [{title:'mario bross'}];
+        // return fetch(`https://api.rawg.io/api/games?key=${API_KEY}`)
+        //     .then(resp => resp.json())
+        //     .then(resp => {
+        //         console.log('HOLA',resp.results)
+        //         let next = resp.next
 
-                let next = resp.next
-
-                for (var i = 0; i < resp.results.length; i++) {
-                    // if (games.length > 14) break;
-                    var game = {};
-                    game.id = resp.results[i].id
-                    game.name = resp.results[i].name
-                    game.img = resp.results[i].background_image;
-                    game.rating = resp.results[i].rating
-                    game.genres = resp.results[i].genres.map(e => { return e.name })
-                    games.push(game)
-                }
-                return fetch(next)
-
-
-            })
-            .then(resp => resp.json())
-            .then(resp => {
-
-                let next = resp.next
-
-                for (var i = 0; i < resp.results.length; i++) {
-                    // if (games.length > 14) break;
-                    var game = {};
-                    game.id = resp.results[i].id
-                    game.name = resp.results[i].name
-                    game.img = resp.results[i].background_image;
-                    game.rating = resp.results[i].rating
-                    game.genres = resp.results[i].genres.map(e => { return e.name })
-                    games.push(game)
-                }
-                return fetch(next)
+        //         for (var i = 0; i < resp.results.length; i++) {
+        //             // if (games.length > 14) break;
+        //             var game = {};
+        //             game.id = resp.results[i].id
+        //             game.name = resp.results[i].name
+        //             game.img = resp.results[i].background_image;
+        //             game.rating = resp.results[i].rating
+        //             game.genres = resp.results[i].genres.map(e => { return e.name })
+        //             games.push(game)
+        //         }
+        //         return fetch(next)
+        res.json(games) //COMENTAR
+    }})
 
 
-            })
-            .then(resp => resp.json())
-            .then(resp => {
+            
+            // .then(resp => resp.json())
+            // .then(resp => {
 
-                let next = resp.next
+            //     let next = resp.next
 
-                for (var i = 0; i < resp.results.length; i++) {
-                    // if (games.length > 14) break;
-                    var game = {};
-                    game.id = resp.results[i].id
-                    game.name = resp.results[i].name
-                    game.img = resp.results[i].background_image;
-                    game.rating = resp.results[i].rating
-                    game.genres = resp.results[i].genres.map(e => { return e.name })
-                    games.push(game)
-                }
-                return fetch(next)
-
-
-            })
-            .then(resp => resp.json())
-            .then(resp => {
-
-                let next = resp.next
-
-                for (var i = 0; i < resp.results.length; i++) {
-                    // if (games.length > 14) break;
-                    var game = {};
-                    game.id = resp.results[i].id
-                    game.name = resp.results[i].name
-                    game.img = resp.results[i].background_image;
-                    game.rating = resp.results[i].rating
-                    game.genres = resp.results[i].genres.map(e => { return e.name })
-                    games.push(game)
-                }
-                return fetch(next)
+            //     for (var i = 0; i < resp.results.length; i++) {
+            //         // if (games.length > 14) break;
+            //         var game = {};
+            //         game.id = resp.results[i].id
+            //         game.name = resp.results[i].name
+            //         game.img = resp.results[i].background_image;
+            //         game.rating = resp.results[i].rating
+            //         game.genres = resp.results[i].genres.map(e => { return e.name })
+            //         games.push(game)
+            //     }
+            //     return fetch(next)
 
 
-            })
+            // })
+            // .then(resp => resp.json())
+            // .then(resp => {
 
-            .then(resp => resp.json())
-            .then(resp => {
+            //     let next = resp.next
 
-                for (var i = 0; i < resp.results.length; i++) {
-                    // if (games.length > 14) break;
-                    var game = {};
-                    game.id = resp.results[i].id
-                    game.name = resp.results[i].name
-                    game.img = resp.results[i].background_image;
-                    game.rating = resp.results[i].rating
-                    game.genres = resp.results[i].genres.map(e => { return e.name })
-                    games.push(game)
-                }
-                return Videogame.findAll({
-                    include: Genre
-                })
-
-
-            })
-
-            .then(resp => {
-                if (resp.length) {
-                    for (var i = 0; i < resp.length; i++) {
-                        games.unshift({
-                            id: resp[i].id,
-                            created: true,
-                            name: resp[i].name,
-                            img: 'https://designbro.com/blog/wp-content/uploads/image2-1.png',
-                            description: resp[i].description,
-                            released: resp[i].released,
-                            rating: resp[i].rating,
-                            platforms: resp[i].platforms,
-                            genres: resp[i].genres.map(e => { return e.name })
-                        })
-
-                    }
-                    return games
-                }
-
-                return games
-            })
-
-            .then(resp => {
-                return res.json(resp)
-            })
-
-            .catch(err => console.log(err))
+            //     for (var i = 0; i < resp.results.length; i++) {
+            //         // if (games.length > 14) break;
+            //         var game = {};
+            //         game.id = resp.results[i].id
+            //         game.name = resp.results[i].name
+            //         game.img = resp.results[i].background_image;
+            //         game.rating = resp.results[i].rating
+            //         game.genres = resp.results[i].genres.map(e => { return e.name })
+            //         games.push(game)
+            //     }
+            //     return fetch(next)
 
 
-    }
-    if (search) {
-        let games = [];
-        Videogame.findOne({
-            where: { name: search },
-            include: Genre
-        })
-            .then(resp => {
+            // })
+            // .then(resp => resp.json())
+            // .then(resp => {
 
-                if (resp) {
-                    var game = {}
-                    game.id = resp.id
-                    game.name = resp.name
-                    game.img = 'https://designbro.com/blog/wp-content/uploads/image2-1.png'
-                    resp.genres.length ? game.genres = resp.genres.map(e => { return e.name }) : null
-                    games.push(game);
-                    return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
+            //     let next = resp.next
 
-                }
-                return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
-            })
+            //     for (var i = 0; i < resp.results.length; i++) {
+            //         // if (games.length > 14) break;
+            //         var game = {};
+            //         game.id = resp.results[i].id
+            //         game.name = resp.results[i].name
+            //         game.img = resp.results[i].background_image;
+            //         game.rating = resp.results[i].rating
+            //         game.genres = resp.results[i].genres.map(e => { return e.name })
+            //         games.push(game)
+            //     }
+            //     return fetch(next)
 
-            .then(resp => resp.json())
-            .then(resp => {
-                if (resp.results.length) {
+
+            // })
+
+            // .then(resp => resp.json())
+            // .then(resp => {
+
+            //     for (var i = 0; i < resp.results.length; i++) {
+            //         // if (games.length > 14) break;
+            //         var game = {};
+            //         game.id = resp.results[i].id
+            //         game.name = resp.results[i].name
+            //         game.img = resp.results[i].background_image;
+            //         game.rating = resp.results[i].rating
+            //         game.genres = resp.results[i].genres.map(e => { return e.name })
+            //         games.push(game)
+            //     }
+            //     return Videogame.findAll({
+            //         include: Genre
+            //     })
+
+
+            // })
+
+            // .then(resp => {
+            //     if (resp.length) {
+            //         for (var i = 0; i < resp.length; i++) {
+            //             games.unshift({
+            //                 id: resp[i].id,
+            //                 created: true,
+            //                 name: resp[i].name,
+            //                 img: 'https://designbro.com/blog/wp-content/uploads/image2-1.png',
+            //                 description: resp[i].description,
+            //                 released: resp[i].released,
+            //                 rating: resp[i].rating,
+            //                 platforms: resp[i].platforms,
+            //                 genres: resp[i].genres.map(e => { return e.name })
+            //             })
+
+            //         }
+            //         return games
+            //     }
+
+            //     return games
+            // })
+
+            // .then(resp => {
+            //     return res.json(resp)
+            // })
+
+            // .catch(err => console.log(err))
+
+
+    
+//     if (search) {
+//         let games = [];
+//         Videogame.findOne({
+//             where: { name: search },
+//             include: Genre
+//         })
+//             .then(resp => {
+
+//                 if (resp) {
+//                     var game = {}
+//                     game.id = resp.id
+//                     game.name = resp.name
+//                     game.img = 'https://designbro.com/blog/wp-content/uploads/image2-1.png'
+//                     resp.genres.length ? game.genres = resp.genres.map(e => { return e.name }) : null
+//                     games.push(game);
+//                     return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
+
+//                 }
+//                 return fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${search}`);
+//             })
+
+//             .then(resp => resp.json())
+//             .then(resp => {
+//                 if (resp.results.length) {
                     
-                    for (var i = 0; i < resp.results.length; i++) {
-                        if (games.length > 13) break;
-                        var game = {}
-                        game.id = resp.results[i].id
-                        game.name = resp.results[i].name
-                        game.img = resp.results[i].background_image
-                        resp.results[i].genres.length ? game.genres = resp.results[i].genres.map(e => { return e.name }) : null
-                        games.push(game)
-                    }
-                    return games
-                } else {
-                    return 'Videogame Not Found'
-                }
+//                     for (var i = 0; i < resp.results.length; i++) {
+//                         if (games.length > 13) break;
+//                         var game = {}
+//                         game.id = resp.results[i].id
+//                         game.name = resp.results[i].name
+//                         game.img = resp.results[i].background_image
+//                         resp.results[i].genres.length ? game.genres = resp.results[i].genres.map(e => { return e.name }) : null
+//                         games.push(game)
+//                     }
+//                     return games
+//                 } else {
+//                     return 'Videogame Not Found'
+//                 }
 
-            })
-            .then(resp => {
-                res.json(resp)
-            })
-            .catch(err => console.log(err))
-    }
+//             })
+//             .then(resp => {
+//                 res.json(resp)
+//             })
+//             .catch(err => console.log(err))
+//     }
 
-})
+// })
 
 
 
