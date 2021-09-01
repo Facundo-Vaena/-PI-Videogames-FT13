@@ -15,6 +15,12 @@
 <img src='./PI3.png' height='200' />
 </p>
 
-## App utlizando React, Redux, Node, Sequelize y testing.
+## App utlizando React, Redux, Node, PostgreSQL, Sequelize y testing.
+### Features:
+    -Exposición videojuegos
+    -Buscador
+    -Filtración y ordenamiento anidados
+    -Formulario controlado para la creación de nuevas tarjetas de videojuegos
+    -Paginación
 
 
