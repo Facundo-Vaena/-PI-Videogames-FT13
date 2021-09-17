@@ -6,38 +6,6 @@ export const GET_ID = 'GET_ID';
 export const EMPTY_VIDEOGAMES = 'EMPTY_VIDEOGAMES'
 export const SET_RESULTS = 'SET_RESULTS'
 
-// export function getVideogames(order, filter) {
-//     return function (dispatch) {
-//         return fetch('http://localhost:3001/videogames')
-//             .then(res => res.json())
-//             .then(res => {
-//                 if (filter && order) {
-//                     var filtered = filtering(res, filter);
-//                     var sorted = sorting(filtered, order)
-//                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
-//                 }
-//                 if (filter && !order) {
-//                     var filtered = filtering(res, filter);
-//                     dispatch({type: GET_VIDEOGAMES, payload: filtered})
-
-//                 }
-//                 if (!filter && order) {
-//                     var sorted = sorting(res, order)
-//                     dispatch({type: GET_VIDEOGAMES, payload: sorted})
-
-//                 }
-//                 if (!filter && !order) {
-//                     dispatch({type: GET_VIDEOGAMES, payload: res})
-
-//                 }
-                
-//             })
-
-
-
-
-//     }
-// }
 
 export function getVideogames(order, filter) {
     return function (dispatch) {
@@ -141,17 +109,6 @@ function sorting(videogames, order){
     }
 }
 
-
-
-
-
-// export function getGenres() {
-//     return function (dispatch) {
-//         return fetch('http://localhost:3001/genres')
-//             .then(res => res.json())
-//             .then(res => dispatch({ type: GET_GENRES, payload: res }))
-//     }
-// }
 
 export function getGenres() {
     return function (dispatch) {

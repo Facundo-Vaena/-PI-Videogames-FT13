@@ -13,7 +13,6 @@ function App() {
       <div className='App'>
       <BrowserRouter>
       <Route path='/createvideogame' component={CreateVideogame}/>
-      {/* <Route path='/home' component={SearchBar}/> */}
       <Route  path='/' exact component={LandingP}/>
       <Route exact path='/home' component={Home} />
       <Route path='/videogamedetail' component={VideogameDetail} />
@@ -23,6 +22,3 @@ function App() {
 }
 
 export default App;
-// {/* <h1>Henry Videogames</h1> */}
-//       {/* <Router> */}
-//       {/* </Router> */}

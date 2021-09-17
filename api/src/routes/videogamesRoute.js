@@ -131,7 +131,6 @@ router.get('/', (req, res) => {
                     games.push(game)
                 }
                 return fetch(next)
-        // res.json(games) //COMENTAR
             })
 
 

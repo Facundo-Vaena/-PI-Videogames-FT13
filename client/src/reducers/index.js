@@ -26,7 +26,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 videogameDetail: action.payload
-                // id: action.payload
             }
         case GET_ID:
             return {

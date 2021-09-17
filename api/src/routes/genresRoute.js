@@ -38,12 +38,6 @@ router.get('/', (req, res) => {
             })
            
         })
-        // .then((resp) => {
-        //     if(Array.isArray(resp)){
-        //         return resp
-        //     }
-        //     return Genre.update()
-        // })
         .then(resp =>{
             if(Array.isArray(resp)){
                 return resp

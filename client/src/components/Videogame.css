@@ -24,11 +24,6 @@ box-shadow: -8px -23px 230px 40px rgba(12,1,1,1);
     margin: 2%
 }
 .button{
-    /* margin: 2%;
-    border-radius: 2px 2px 2px 2px;
-    background: rgb(11, 196, 226);
-    color:#ffffff;
-    text-decoration: none */
     cursor: pointer;
     border-radius: 8%;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);

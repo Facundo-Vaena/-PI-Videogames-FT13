@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getId } from '../actions'
 import { Link } from 'react-router-dom';
 import './Videogame.css';
-//recibe x props img, name y genres y DEBERIA id
+//recibe x props img, name y genres y deberia id
 //debería ofrecer detalles (acceder a un metodo de las action creators que busque por id)
 
 export function Videogame({ idVideogame, name, genres, img, getId,  }) {
@@ -47,5 +47,4 @@ function mapDispatchToProps(dispatch) {
         getId: (id) => dispatch(getId(id))
     }
 }
-//mapState quizas no sea necesario
 export default connect(null, mapDispatchToProps)(Videogame)

@@ -19,22 +19,17 @@
     filter: brightness(100%);
     left:550px;
     top:80px;
-    /* font-family: 'Ubuntu', sans-serif; */
-    /* font-family: 'Alegreya', serif; */
-    /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Teko', sans-serif;
     font-size: 100px;    
     
 }
 .landingTitle h1{
-    /* color: rgb(15, 126, 120); */
     color: #514d4d;
     position: absolute;
     left:400px;
     top:10px;
 }
 .landingTitle sup{
-    /* color: rgb(255, 255, 1); */
     color: #ffff00c4;
     position:absolute;
     left:-42px;

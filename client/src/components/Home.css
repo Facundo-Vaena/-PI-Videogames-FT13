@@ -15,8 +15,6 @@
 .homeTitle{
     color:#ffffff;
     font-size: 60px;
-    /* font-family: 'Ubuntu', sans-serif; */
-    /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Teko', sans-serif;
     font-size: 70px;
     filter: brightness(100%);
@@ -35,9 +33,6 @@
 }
 
 .orderFilterContainer{
-    /* display: flex;
-    justify-content:flex-start; */
-    /* flex-direction: column; */
     position:absolute;
     top:250px;
     left:-10px;
@@ -57,9 +52,6 @@
     right: 1200px;
     top:190px;
     cursor: pointer;
-    /* margin-left: 9%;
-    margin-top: 1%; */
-    /* margin-right: 70%; esto no se decomenta */
     border-radius: 8%;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -69,19 +61,6 @@
   
   color: #ffffff;
   font-size: 15px;
-    /* margin-top: 1%;
-    margin-right: 70%;
-    border-radius: 8%;
-    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  
-  color: #ffffff;
-  font-size: 15px;
-  padding: 10px 20px 10px 20px; */
-
 }
 
 .btn:hover{
@@ -157,17 +136,12 @@ margin-bottom: 13%;
 }
 
 .btnHomeCreation{
-    /* display: flex;
-    justify-content: flex-start; */
     position: absolute;
     font-family: 'Ubuntu', sans-serif;
     right: 1200px;
     top:190px;
     cursor: pointer;
-    /* margin-left: 9%;
-    margin-top: 1%; */
-    /* margin-right: 70%; esto no se decomenta */
-    border-radius: 8%;
+     border-radius: 8%;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);

@@ -8,19 +8,6 @@ import './SearchBar.css'
 export function SearchBar({  emptyVideogames, setResults }) {
     const [games, setGames] = useState('');
     const [array, setArray] = useState([]);
-
-    // function search(name) {
-    //     emptyVideogames()
-    //     fetch(`http://localhost:3001/videogames?search=${name}`)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             setResults(res.length)
-    //              setArray(res)
-    //              document.getElementById('searchInputId').value = '';
-    //         })
-
-
-    // }
     
     function search(name) {
         emptyVideogames()
@@ -38,10 +25,7 @@ export function SearchBar({  emptyVideogames, setResults }) {
 
 
     return (<div className='searchContainer'>
-
-
-            {/* <button className='creationHomeLink' onClick={()=> window.history.back()} >Home</button> */}
-        
+   
 
         <div>
             <form onSubmit={e => {

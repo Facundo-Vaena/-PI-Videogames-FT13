@@ -44,7 +44,6 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
 
         <div className='homeSubcontainer'>
             {results > 15 || results === undefined || videogames.length > 15 ? <div>
-                {/* {page > 16 ? <button className='homePageBtn' onClick={() => setPage(page - 15)}>Prev</button> : null} */}
                 <button className='homePageBtn' onClick={() => setPage(0)}>1</button>
                 <button className='homePageBtn' onClick={() => setPage(16)}>2</button>
                 <button className='homePageBtn' onClick={() => setPage(31)}>3</button>
@@ -52,7 +51,6 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
                 <button className='homePageBtn' onClick={() => setPage(63)}>5</button>
                 <button className='homePageBtn' onClick={() => setPage(79)}>6</button>
                 <button className='homePageBtn' onClick={() => setPage(95)}>7</button>
-                {/* {page < 79 ? <button className='homePageBtn' onClick={() => setPage(page + 15)}>Post</button> : null} */}
 
 
             </div> : null}
@@ -76,14 +74,9 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
 
 
                 <span className={open ? 'orderFilterContainerClicked' : 'orderFilterContainer'}>
-                    {/* <button onClick={() =>{setOpen([!open[0]])}}>order</button>
-                {open[0] ? <div> <button onClick={() => setOpen([true, !open[1], false])}>alpha</button> <button onClick={()=>setOpen([true, false, !open[2]])}>rating</button> </div> : null}
-                {open[0] && open[1] ? <div> <p>Select a filter</p> <button>genre</button> <button>created</button> </div> : null}
-                {open[0] && open[2] ? <div> <p>Select a filter</p> <button>genre</button> <button>created</button> </div> : null} */}
                     <div><button type="button" class="btn " onClick={() => setOpen(!open)}>Order & Filter</button></div>
                     {orderFilter.order !== null || orderFilter.filter !== null ? <button className='filterOrderEnter' onClick={() => preGetVideogames()}>Reorganize Videogames</button> : null}
 
-                    {/* {open ? <span className='btnOrderFilter2'> <div className='btnOrder'><button  onClick={() => setOpenOrder(!openOrder)}>Order</button></div> <div className='btnFilter'><button onClick={() => setOpenFilter(!openFilter)}>Filter</button></div></span> : null} */}
                     <div className='orderContainer'>
                         {open ? <span><button className='filterOrderStart' onClick={() => setOpenOrder(!openOrder)}>Order</button></span> : null}
                         <div className='ordersContainer'>
@@ -115,49 +108,9 @@ export function Home({ videogames, genres, getVideogames, getGenres, results }) 
                             </div>
                         </div>
                     </div>
-                    {/* {openCreated ? <span> <button onClick={() => setOrderFilter({ ...setOrderFilter, filter: 'hideCreated' })}>Hide Created Games</button> <button onClick={() => setOrderFilter({ ...setOrderFilter, filter: 'onlyCreated' })}>Show Only Created Games</button> </span> : null} */}
-                    {/* {openOrder ? <span> <button onClick={() => setOrderFilter({ ...orderFilter, order: 'aAsc' })}>Ascending Alphabetical Order</button>  <button onClick={() => setOrderFilter({ ...orderFilter, order: 'norm' })}>Normal Order</button> <button onClick={() => setOrderFilter({ ...orderFilter, order: 'aDesc' })}>Descending Alphabetical Order</button> </span> : null} */}
-                    {/* {openFilter ? <div> <button onClick={() => setOpenGenres(!openGenres)}>By Genre</button> <button onClick={() => setOpenCreated(!openCreated)}>Show or Hide Created Videogames</button> </div> : null} */}
 
                 </span>
             </div>
-
-
-            {/* <div>
-                <button onClick={() => getVideogames()}>Normal Order</button>
-            </div>
-
-            <div>
-                <button onClick={() => getVideogames('desc')}>Descending Alphabetical Order</button>
-            </div>
-
-            <div>
-                <button onClick={() => getVideogames('asc')}>Ascending Alphabetical Order</button>
-            </div>
-            <div>
-                <button onClick={() => getVideogames('rAsc')}>Best Ranked</button>
-            </div>
-
-            <div>
-
-                <select name="filterByGenre" onChange={(e) => getVideogames(null, e.target.value)}>
-                    <option key={2} value="" selected >Select a Genre---</option>
-                    {genres.map(e => {
-                        return (<option key={e.id}>{e.name}</option>)
-                    })}
-                </select>
-            </div>
-
-            <div>
-                <button onClick={() => getVideogames(null, null, 'show')}>Show only Created Games</button>
-            </div>
-
-            <div>
-                <button onClick={() => getVideogames(null, null, 'hide')}>Hide Created Games</button>
-            </div> */}
-
-
-
 
             <div className='videogames'>
                 {videogames.length &&
@@ -210,7 +163,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        // getVideogames: (order, genre, creation) => dispatch(getVideogames(order, genre, creation)),
         getVideogames: (order, filter) => dispatch(getVideogames(order, filter)),
         getGenres: () => dispatch(getGenres())
     }
@@ -218,19 +170,4 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-
-
-
-//  function(dispatch){
-//     return fetch('http://localhost:3001/videogames')
-//     .then(resp => resp.json() )
-//     .then(res => {
-//         !res.length ? dispatch({type:'GET_VIDEOGAMES', payload: ['no hay juegos']}) : 
-//         dispatch({
-//         type: 'GET_VIDEOGAMES',
-//         payload: res
-//     })})
-//     .catch(err => console.log(err))
-
-// }
 

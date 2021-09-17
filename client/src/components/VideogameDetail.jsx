@@ -11,27 +11,7 @@ export function VideogameDetail({ id }) {
 
     const [details, setDetails] = useState({})
 
-    // function det(id) {
-    //     fetch(`http://localhost:3001/videogames/${id}`)
-    //     .then(res => res.json())
-    //         .then(res => {
-    //             getDetails(res)
-
-    //         })
-    //         .catch( err => console.log(err))
-    // }
-
-
-
     useEffect(() => {
-        // det(3498) //id de GTA
-        // det(id)
-        // fetch(`http://localhost:3001/videogames/${id}`) SI HAY QUE DESCOMENTAR, SOLO DESCOMENTAR EL FETCH (NI LO DE ARRIBA NI LO DE ABAJO COMENTADO)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         setDetails(res)
-
-        //     })
         axios.get(`/videogames/${id}`)
             // .then(res => res.json())
             .then(response => {
@@ -93,15 +73,10 @@ export function VideogameDetail({ id }) {
 
 function mapStateToProps(state) {
     return {
-        // videogameDetail: state.videogameDetail,
         id: state.id
     }
 }
-// function mapDispatchToProps(dispatch){
-//     return {
-//         getDetails : id => dispatch(getDetails(id))
-//     }
-// }
+
 
 export default connect(mapStateToProps)(VideogameDetail)
 
